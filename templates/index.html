@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="h-screen">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enter URL</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <style>
+    #copy-message {
+      font-size: 1.25rem; /* Bigger text */
+      font-weight: bold;
+      color: #48c774; /* Bulma success color */
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="hero is-fullheight has-background-dark">
+
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="box has-background-grey-dark p-6">
+        <h1 class="title has-text-white">Enter the URL Below</h1>
+
+        <form action="/" method="POST">
+          <div class="field">
+            <div class="control">
+              <input type="text" id="long" name="long" required class="input is-medium"
+                placeholder="https://example.com">
+            </div>
+          </div>
+
+          <button type="submit" class="button is-primary is-fullwidth is-medium">Submit</button>
+
+          {{ if .url }}
+          <div class="mt-4">
+            <p class="has-text-white">Your Shortened URL:</p>
+            <h2 id="short-url" class="subtitle has-text-info is-clickable" onclick="copyURL(this)">
+              {{ .url }}
+            </h2>
+            <p id="copy-message">Copied!</p>
+          </div>
+          {{ end }}
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyURL(element) {
+      navigator.clipboard.writeText(element.innerText).then(() => {
+        const msg = document.getElementById('copy-message');
+        msg.style.opacity = '1';  // Show message
+        setTimeout(() => msg.style.opacity = '0', 2000);  // Hide after 2s
+      });
+    }
+  </script>
+
+</body>
+</html>
