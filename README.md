@@ -5,7 +5,7 @@ The goal of this project is to explore backend fundamentals such as routing, per
 
 ---
 
-## ✨ Overview
+##  Overview
 
 **URLShortner** is a simple URL shortening service that:
 - Accepts long URLs
@@ -15,7 +15,7 @@ The goal of this project is to explore backend fundamentals such as routing, per
 
 ---
 
-## 🧠 Features
+##  Features
 
 - Written from scratch in Go 
 - URL shortening and redirection  
